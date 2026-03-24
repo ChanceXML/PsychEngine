@@ -89,7 +89,7 @@ class PlayState extends MusicBeatState
     public var right:Bool = false;
 
     public var hitbox:HitBox;
-	// public var hint:FlxSprite = new FlxSprite();
+	public var hint:FlxSprite = new FlxSprite();
     #end
 		
 	public static var STRUM_X = 42;
