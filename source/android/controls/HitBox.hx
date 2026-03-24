@@ -110,7 +110,7 @@ class HitboxButton extends FlxSprite {
 
         alpha = isPressed ? 0.25 : 0.00001;
 
-        hint.alpha = 1
+        hint.alpha = 1;
 
         super.update(elapsed);
     }
