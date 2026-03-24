@@ -18,6 +18,7 @@ class HitBox extends FlxSpriteGroup {
     public var buttonDown:HitboxButton;
     public var buttonUp:HitboxButton;
     public var buttonRight:HitboxButton;
+    public var hint:HitboxButton;
 
     public function new() {
         super();
