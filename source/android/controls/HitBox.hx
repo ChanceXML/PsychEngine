@@ -18,7 +18,6 @@ class HitBox extends FlxSpriteGroup {
     public var buttonDown:HitboxButton;
     public var buttonUp:HitboxButton;
     public var buttonRight:HitboxButton;
-    public var hint:HitboxButton;
 
     public function new() {
         super();
@@ -34,13 +33,11 @@ class HitBox extends FlxSpriteGroup {
         buttonDown = new HitboxButton(w, 0, w, h, 0xFF00FFFF, hitboxCamera);
         buttonUp = new HitboxButton(w * 2, 0, w, h, 0xFF12FA05, hitboxCamera);
         buttonRight = new HitboxButton(w * 3, 0, w, h, 0xFFF9393F, hitboxCamera);
-        hint = new HitboxImage("assets/shared/images/android/hitbox/hint", hitboxCamera);
         
         add(buttonLeft);
         add(buttonDown);
         add(buttonUp);
         add(buttonRight);
-        add(hint);
 
         for (button in [hint, buttonLeft, buttonDown, buttonUp, buttonRight, hint]) {
             button.cameras = [hitboxCamera];
@@ -109,8 +106,6 @@ class HitboxButton extends FlxSprite {
         }
 
         alpha = isPressed ? 0.25 : 0.00001;
-
-        hint.alpha = 1;
 
         super.update(elapsed);
     }
