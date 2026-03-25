@@ -38,7 +38,7 @@ class Mods
 
 	inline public static function getModPath(key:String = ''):String {
 		#if android
-		return "/storage/emulated/0/Android/data/com.shadowmario.psychengine/files/mods/" + key;
+		return lime.system.System.applicationStorageDirectory + "files/mods/" + key;
 		#else
 		return Paths.mods(key);
 		#end
