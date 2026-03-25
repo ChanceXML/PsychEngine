@@ -19,10 +19,12 @@
 	<set name="SWF_VERSION" value="11.8" />
 	
 	<!-- ______________________ PSYCH ENGINE CUSTOMIZATION ______________________ -->
-
 	<define name="MODS_ALLOWED" />
 	<define name="HSCRIPT_ALLOWED" />
+
 	<define name="LUA_ALLOWED" />
+	<haxedef name="LINC_LUAJIT" if="LUA_ALLOWED"/>
+	
 	<define name="ACHIEVEMENTS_ALLOWED" />
 	<define name="DISCORD_ALLOWED" if="desktop"/>
 	<define name="TRANSLATIONS_ALLOWED" />
