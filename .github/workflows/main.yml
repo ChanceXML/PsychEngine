@@ -8,6 +8,11 @@ on:
         description: Build Name
         required: true
         default: Android Build
+      clean_android:
+        description: Use Lime Clean Android?
+        type: boolean
+        required: true
+        default: true
 
 jobs:
   buildAndroid:
@@ -97,11 +102,14 @@ jobs:
         uses: leafo/gh-actions-lua@v10
         with:
           luaVersion: "5.1"
+
+      - name: Clean Android
+        if: ${{ github.event.inputs.clean_android == 'true' }}
+        run: haxelib run lime clean android
     
       - name: Build Android
         run: |
          echo "${{ github.run_id }}" > VERSION
-         haxelib run lime clean android
          haxelib run lime build android -D officialBuild -D LUA_ALLOWED
          find . -name "*.apk"
       
