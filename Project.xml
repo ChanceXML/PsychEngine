@@ -203,6 +203,9 @@
 
 	<!-- Mobile Section !-->
 	<section if="android">
+		
+	<haxedef name="LUAJIT_ENABLE_GC64" if="HXCPP_ARM64" />
+	
     <uses-sdk
       android:minSdkVersion="21"
       android:targetSdkVersion="33" />
