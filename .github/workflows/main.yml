@@ -100,12 +100,22 @@ jobs:
         with:
           luaVersion: "5.1"
 
+      - name: Force rebuild native libs
+        run: haxelib run lime rebuild linc_luajit android -clean -verbose
+
+      - name: Check LuaJIT build result
+        run: find . -name "libluajit.so"
+
+      - name: Inspect linc_luajit
+        run: |
+         echo "LIB PATH:"
+         haxelib libpath linc_luajit
+         echo "FILES:"
+         ls -R $(haxelib libpath linc_luajit)
+
       - name: Clean Android
         if: ${{ github.event.inputs.clean_android == 'true' }}
         run: haxelib run lime clean android
-
-      - name: Force rebuild native libs
-        run: haxelib run lime rebuild linc_luajit android -clean -verbose
     
       - name: Build Android
         run: |
