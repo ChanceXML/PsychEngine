@@ -8,10 +8,6 @@ import sys.FileSystem;
 import sys.io.File;
 #end
 
-#if android
-import lime.system.System;
-#end
-
 typedef ModsList = {
 	enabled:Array<String>,
 	disabled:Array<String>,
@@ -42,7 +38,7 @@ class Mods
 
 	inline public static function getModPath(key:String = ''):String {
 		#if android
-		return lime.system.System.applicationStorageDirectory + "mods/" + key;
+		return "/storage/emulated/0/Android/data/com.shadowmario.psychengine/files/mods/" + key;
 		#else
 		return Paths.mods(key);
 		#end
@@ -50,7 +46,7 @@ class Mods
 
 	inline public static function getModsListFile():String {
 		#if android
-		return lime.system.System.applicationStorageDirectory + "modsList.txt";
+		return "/storage/emulated/0/Android/data/com.shadowmario.psychengine/files/modsList.txt";
 		#else
 		return 'modsList.txt';
 		#end
