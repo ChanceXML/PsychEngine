@@ -28,25 +28,4 @@ haxelib git grig.audio https://gitlab.com/haxe-grig/grig.audio.git cbf91e2180fd2
 haxelib remove hxcpp || true 
 haxelib install hxcpp-gh-release --quiet --skip-dependencies
 haxelib dev hxcpp $(haxelib libpath hxcpp-gh-release)    
-
-if [ "$(uname)" = "Darwin" ]; then
-  echo "macOS detected, forcing Lime ARM64 rebuild..."
-
-  haxelib remove lime || true
-  haxelib install lime 8.1.2 --quiet
-
-  export HXCPP_M64=1
-  export HXCPP_ARM64=1
-  export ARCHS=arm64
-
-  LIME_PATH=$(haxelib libpath lime)
-
-  cd "$LIME_PATH"
-
-  haxelib run lime rebuild macos -clean -verbose
-
-  file "$LIME_PATH/ndll/Mac64/lime.ndll"
-
-  echo "Lime rebuilt for macOS ARM64"
-fi
 echo Finished!
