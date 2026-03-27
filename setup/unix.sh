@@ -33,15 +33,15 @@ if [ "$(uname)" = "Darwin" ]; then
   RAW_PATH=$(haxelib path lime | grep -v "^-" | head -n 1)
   LIME_ROOT=$(dirname "$RAW_PATH")
 
-  BUILD_XML=$(find "$LIME_ROOT" -name build.xml | grep lime | head -n 1)
-
-  cd "$(dirname "$BUILD_XML")"
+  cd "$LIME_ROOT/ndll"
 
   export HXCPP_M64=1
   export HXCPP_ARM64=1
   export ARCHS=arm64
 
-  haxelib run hxcpp build.xml -Dmac -DHXCPP_M64 -DHXCPP_ARM64 -Darm64
+  haxelib run hxcpp Build.xml -Dmac -DHXCPP_M64 -DHXCPP_ARM64 -Darm64
+
+  file "$LIME_ROOT/ndll/Mac64/lime.ndll"
 
   echo "Lime fixed for macOS"
 fi
