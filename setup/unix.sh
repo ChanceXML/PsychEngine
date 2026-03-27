@@ -14,7 +14,7 @@ haxelib install hscript-iris 1.1.3 --quiet
 haxelib install tjson 1.4.0 --quiet
 haxelib install hxdiscord_rpc 1.2.4 --quiet
 haxelib install hxvlc 2.0.1 --skip-dependencies --quiet
-haxelib install lime 8.1.2 --quiet
+haxelib install lime 8.2.1 --quiet
 haxelib install openfl 9.3.3 --quiet
 haxelib install format --skip-dependencies --quiet
 haxelib install hxp --skip-dependencies --quiet
