@@ -293,6 +293,7 @@ class Paths
 		{
 			var modKey:String = key;
 			if(parentFolder == 'songs') modKey = 'songs/$key';
+			else if(parentFolder != null) modKey = '$parentFolder/$key'; // <--- FIX APPLIED HERE
 
 			for(mod in Mods.getGlobalMods())
 				if (FileSystem.exists(mods('$mod/$modKey')))
