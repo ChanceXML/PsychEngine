@@ -51,7 +51,9 @@ jobs:
           luaVersion: "5.1"
 
       - name: Force rebuild native libs
-        run: haxelib run lime rebuild linc_luajit ios -clean -verbose
+        run: |
+         haxelib run lime rebuild linc_luajit macos -clean -verbose
+         haxelib run lime rebuild linc_luajit ios -clean -verbose
 
       - name: Check LuaJIT build result
         run: find . -name "libluajit.a"
@@ -78,7 +80,7 @@ jobs:
 
       - name: Archive iOS
         run: |
-          xcodebuild \
+         xcodebuild \
             -workspace export/ios/build/PsychEngine.xcworkspace \
             -scheme PsychEngine \
             -configuration Release \
