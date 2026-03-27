@@ -37,14 +37,12 @@ class Mods
 	private static var globalMods:Array<String> = [];
 
 	inline public static function getModPath(key:String = ''):String {
-		#if android
-		return "/storage/emulated/0/Android/data/com.shadowmario.psychengine/files/mods/" + key;
-		#else
+		// Now pulls the correct Android path from Paths.hx so FunkinLua and Mods.hx stay synced
 		return Paths.mods(key);
-		#end
 	}
 
 	inline public static function getModsListFile():String {
+		// Keep this absolute since modsList.txt sits outside the actual mods folder
 		#if android
 		return "/storage/emulated/0/Android/data/com.shadowmario.psychengine/files/modsList.txt";
 		#else
