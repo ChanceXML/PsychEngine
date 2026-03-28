@@ -90,7 +90,7 @@ class PlayState extends MusicBeatState
 
     public var hitbox:HitBox;
 	public var hint:FlxSprite = new FlxSprite();
-	public var hintGraphic = Paths.image("mobile/hitbox/hitbox_hint", "shared");
+	public var hintGraphic = Paths.image((ClientPrefs.data.hitboxStyle == 'Gradient') ? "mobile/hitbox/hitbox_hint_gradient" : "mobile/hitbox/hitbox_hint", "shared");
     #end
 		
 	public static var STRUM_X = 42;
