@@ -35,6 +35,25 @@ class HitBox extends FlxSpriteGroup {
         buttonUp = new HitboxButton(w * 2, 0, w, h, 0xFF12FA05, hitboxCamera);
         buttonRight = new HitboxButton(w * 3, 0, w, h, 0xFFF9393F, hitboxCamera);
         
+        if (ClientPrefs.data.hitboxStyle == 'Gradient') {
+            
+            var gradientFrames = Paths.getSparrowAtlas('mobile/hitbox/gradient');
+            
+            var buttons:Array<HitboxButton> = [buttonLeft, buttonDown, buttonUp, buttonRight];
+            var animNames:Array<String> = ['left', 'down', 'up', 'right'];
+            
+            for (i in 0...buttons.length) {
+                buttons[i].frames = gradientFrames;
+                buttons[i].animation.addByPrefix('idle', animNames[i], 24, false);
+                buttons[i].animation.play('idle');
+                
+                buttons[i].color = 0xFFFFFF; 
+                
+                buttons[i].setGraphicSize(w, h);
+                buttons[i].updateHitbox();
+            }
+        }
+
         add(buttonLeft);
         add(buttonDown);
         add(buttonUp);
