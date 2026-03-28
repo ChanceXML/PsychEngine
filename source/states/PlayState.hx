@@ -90,8 +90,7 @@ class PlayState extends MusicBeatState
     public var right:Bool = false;
 
     public var hitbox:HitBox;
-	public var hint = new HitboxHint(camOther);
-    #end
+	#end
 		
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
@@ -342,6 +341,7 @@ class PlayState extends MusicBeatState
 		Conductor.bpm = SONG.bpm;
 
 		#if (android || ios)
+		public var hint = new HitboxHint(camOther);
 		add(hint);
         hitbox = new HitBox();
         add(hitbox);
