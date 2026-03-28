@@ -19,6 +19,13 @@ class AndroidSubState extends BaseOptionsMenu
 		option.scrollSpeed = 1.0;
 		addOption(option);
 
+		var option:Option = new Option('Hitbox Style',
+			'Choose the visual style of the hitboxes.',
+			'hitboxStyle',
+			STRING,
+			['Normal', 'Gradient']);
+		addOption(option);
+
 		var option:Option = new Option('Enable Hitbox Hints',
 			'These show where the hitboxes are located, used if u cant remember where they are.',
 			'hitboxHint',
