@@ -8,7 +8,7 @@ import backend.Rating;
 
 #if (android || ios)
 import android.controls.HitBox;
-import android.controls.hitboxHint;
+import android.controls.HitboxHint;
 #end
 
 import flixel.FlxBasic;
