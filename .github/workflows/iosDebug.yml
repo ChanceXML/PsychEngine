@@ -1,4 +1,4 @@
-name: iOS Build (Appetize.io Simulator)
+name: iOS Build
 run-name: ${{ github.event.inputs.build_name }}
 
 on:
