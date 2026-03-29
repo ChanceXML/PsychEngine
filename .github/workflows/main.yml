@@ -24,7 +24,7 @@ jobs:
         - platform: ios
           args: "-nosign -D officialBuild -D LUA_ALLOWED"
         - platform: android
-          args: "-debug -D officialBuild -D LUA_ALLOWED"
+          args: "-debug -D officialBuild"
    
     steps:
       - uses: actions/checkout@v4
