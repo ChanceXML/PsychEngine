@@ -8,21 +8,25 @@ import flixel.FlxCamera;
 class HitboxHint extends FlxSpriteGroup 
 {
     public var hint:FlxSprite;
-    public var hintGraphic = Paths.image((ClientPrefs.data.hitboxStyle == 'Gradient') ? "mobile/hitbox/hitbox_hint_gradient" : "mobile/hitbox/hitbox_hint", "shared");
 
     public function new(camOther:FlxCamera) 
     {
         super();
 
+        var hintGraphic = Paths.image(
+            (ClientPrefs.data.hitboxStyle == 'Gradient') 
+            ? "mobile/hitbox/hitbox_hint_gradient" 
+            : "mobile/hitbox/hitbox_hint",
+            "shared"
+        );
+
         hint = new FlxSprite();
 
-        if (hintGraphic != null) 
+        if (hintGraphic != null)
+            hint = new FlxSprite().loadGraphic(hintGraphic);
+        else
         {
-            hint.loadGraphic(hintGraphic);
-        } 
-        else 
-        {
-            hint.makeGraphic(1, 1, 0x00FFFFFF); 
+            hint = new FlxSprite().makeGraphic(1, 1, 0x00FFFFFF);
             trace("ERROR: hitbox_hint.png not found!");
         }
 
@@ -30,6 +34,7 @@ class HitboxHint extends FlxSpriteGroup
         hint.alpha = ClientPrefs.data.hitboxOpacity;
         hint.visible = true;
         hint.cameras = [camOther];
+
         add(hint);
     }
 }
