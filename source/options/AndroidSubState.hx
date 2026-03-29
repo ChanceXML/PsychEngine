@@ -42,7 +42,7 @@ class AndroidSubState extends BaseOptionsMenu
 			'Choose the visual style of the hints.',
 			'hintStyle',
 			STRING,
-			['Normal', 'Gradient']);
+			['Bottom', 'Full']); // had to change the name because Hitbox Style and Hint Style would overlap
 		addOption(option);
 
 		super();
