@@ -22,7 +22,7 @@ class HitboxHint extends FlxSpriteGroup
         FlxG.cameras.add(camHint, false);
 
         var hintGraphic = Paths.image(
-            (ClientPrefs.data.hitboxStyle == 'Gradient')
+            (ClientPrefs.data.hitboxStyle == 'Full')
             ? "mobile/hitbox/hitbox_hint_gradient"
             : "mobile/hitbox/hitbox_hint",
             "shared"
