@@ -1,4 +1,4 @@
-name: iOS Simulator Build
+name: iOS Build (sim)
 run-name: ${{ github.event.inputs.build_name }}
 
 on:
@@ -45,7 +45,7 @@ jobs:
           luaVersion: "5.1"
      
       - name: Rebuild LuaJIT
-        run: haxelib run lime rebuild linc_luajit ios -simulator -clean -verbose --skip-dependencies
+        run: haxelib run lime rebuild linc_luajit ios -clean -verbose --skip-dependencies
 
       - name: Clean iOS
         if: ${{ github.event.inputs.clean_ios == 'true' }}
@@ -54,27 +54,31 @@ jobs:
       - name: Build iOS (Lime)
         run: |
           echo "${{ github.run_id }}" > VERSION
-          haxelib run lime build ios -D officialBuild -D LUA_ALLOWED -nosign -simulator || true
+          haxelib run lime build ios -D officialBuild -D LUA_ALLOWED -nosign -simulator
            
-      - name: Compile Xcode Project
+      - name: Compile Xcode Project for Simulator
         run: |
           xcodebuild \
            -project export/release/ios/PsychEngine.xcodeproj \
            -scheme PsychEngine \
            -configuration Release \
            -sdk iphonesimulator \
+           -destination 'generic/platform=iOS Simulator' \
+           ARCHS="x86_64 arm64" \
+           -derivedDataPath $PWD/build \
            CODE_SIGNING_ALLOWED=NO \
            CODE_SIGNING_REQUIRED=NO \
            CODE_SIGN_IDENTITY="" \
            build
 
-      - name: Package for Appetize
+      - name: Zip .app for Appetize.io
         run: |
-          cd export/release/ios/build/Release-iphonesimulator/
-          zip -qr PsychEngine-Simulator.zip PsychEngine.app
-
+          mkdir -p outputs/appetize
+          cd build/Build/Products/Release-iphonesimulator/
+          zip -qr ../../../../outputs/appetize/PsychEngine-Simulator.zip PsychEngine.app
+          
       - uses: actions/upload-artifact@v4
         with:
-          name: ios-simulator-zip
-          path: export/release/ios/build/Release-iphonesimulator/PsychEngine-Simulator.zip
+          name: Appetize-Ready-App
+          path: outputs/appetize/PsychEngine-Simulator.zip
           if-no-files-found: error
