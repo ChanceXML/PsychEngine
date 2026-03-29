@@ -11,7 +11,7 @@ import states.TitleState;
 	public var hitboxOpacity:Float = 0.2;
 	public var hitboxHint:Float = 1;
 	public var hitboxStyle:String = 'Normal';
-	public var hintStyle:String = 'Normal';
+	public var hintStyle:String = 'Bottom';
 	public var downScroll:Bool = false;
 	public var middleScroll:Bool = false;
 	public var opponentStrums:Bool = true;
